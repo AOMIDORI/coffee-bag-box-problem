@@ -4,4 +4,4 @@
 npm install
 yarn start
 ```
-It should open at localhost:3000
+Open the browser at http://localhost:3000/

@@ -68,3 +68,7 @@ label {
   font-weight: 300;
   text-align: center;
 }
+
+.result-error {
+  color: #FF5353;
+}

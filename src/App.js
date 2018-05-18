@@ -31,11 +31,11 @@ class App extends Component {
     // Verify the input
     if(inputData.boxSize < 30 || inputData.boxSize > 100) {
       invalidInput = true;
-      errorMessage = 'Please input a valid box size from 30cm to 100cm.';
+      errorMessage = 'Please input a valid box size from 30cm to 100cm. ';
     }
     if(inputData.smallBagNumber < 0 || inputData.mediumBagNumber < 0 || inputData.largeBagNumber < 0) {
       invalidInput = true;
-      errorMessage += ' Please input a valid number of bags.';
+      errorMessage += 'Please input a valid number of bags.';
     }
     this.setState({errorMessage: errorMessage});
     if(!invalidInput) {
@@ -59,9 +59,11 @@ class App extends Component {
   }
 
   packAllBags = async (bagType, bagNumber, boxSize, totalBoxes) => {
+    // pack all bags of a type
     console.log("\n\n\n---------Fitting all the", bagType, "bags -----------\n\n");
     let bagsLeft = bagNumber;
     while(bagsLeft > 0) {
+      // find spaces in existing boxes to fit bags
       let packedBags = await this.findContainerToFit (bagType, bagsLeft);
       if(packedBags > 0) {
         bagsLeft -= packedBags;
@@ -70,7 +72,6 @@ class App extends Component {
       } else {
         // if cannot fit in existing boxes, add a new box
         totalBoxes ++;
-        this.setState({totalBoxes: totalBoxes});
         console.log('add a new box');
         const newBox = {
           a: Number(boxSize),
@@ -85,6 +86,7 @@ class App extends Component {
     return totalBoxes;
   }
   findContainerToFit = async (bagType, bagsLeft) => {
+    // In existing containers, find one to fit as much bags as possible
     const bag = Bags[bagType];
     let containers = this.state.containers;
     let packedBags = 0;
@@ -108,7 +110,8 @@ class App extends Component {
           });
           subContainers = subContainers.filter(subContainer => this.ifContainerEnoughSpace(subContainer));
         } else {
-          // Fill one layer first
+          // According to the container and how many bags left
+          // fill one layer first
           let largestCapacity = Math.max(capacityA, capacityB, capacityC);
           let fillDirection = [capacityA, capacityB, capacityC].findIndex((c)=> c === largestCapacity);
           let bagSpace;
@@ -150,6 +153,7 @@ class App extends Component {
   }
 
   fitBags = (container, bagSpace) => {
+    // fit bags and return new sub containers
     let newContainers =[];
     if(container.a !== bagSpace.a) {
       newContainers.push({
