@@ -1,0 +1,70 @@
+@import "./styles/normalize.css";
+@import "./styles/skeleton.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+header {
+  text-align: center;
+  height: 170px;
+  padding: 20px;
+}
+
+button, button:hover, button:focus {
+  border: none;
+  background: #4F50FF;
+  color: white;
+  letter-spacing: 3px;
+  transition: all 0.4s ease-in-out;
+}
+
+.App-logo {
+  height: 90px;
+  margin-bottom: 20px;
+}
+.App-title {
+  font-size: 1.6em;
+}
+
+.input-area {
+  margin: 60px auto 20px auto;
+  width: 80%;
+  padding: 30px 10px 80px 10px;
+  border-top: 2px solid #4F50FF;
+  box-shadow: 0px 6px 36px rgba(0,0,0,0.102);
+  color: #212121;
+  font-weight: 300;
+}
+.body-title {
+  font-size: 1.4em;
+  margin-left: 10%;
+}
+label {
+  font-weight: 400;
+  color: #BEBEBE;
+}
+.columns input {
+  max-width: 90%;
+}
+.input-area h5 {
+  margin-top: 20px;
+}
+.input-area button {
+  float: right;
+  margin: 10px 10% 30px 10px;
+}
+
+
+.result-area {
+  margin: 20px auto 20px auto;
+  width: 80%;
+  padding: 60px 10px 60px 10px;
+  border-top: 2px solid #4F50FF;
+  box-shadow: 0px 6px 36px rgba(0,0,0,0.102);
+  color: #212121;
+  font-weight: 300;
+  text-align: center;
+}
